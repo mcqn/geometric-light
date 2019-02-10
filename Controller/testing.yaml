@@ -1,0 +1,75 @@
+logfile: "activity.log"
+# Times (hours of 24hr clock) between which the display should be off
+off_period:
+  start: 14
+  end: 15
+teensy_count: 1
+teensies:
+  - teensy_id: 1
+    touchpads: # Sayers
+      - id: 0 # pink, left
+        touch_threshold: 1180
+      - id: 1 # yellow, right
+        touch_threshold: 1200
+baubles:
+  - teensy_id: 1
+    bauble_id: 0 # reflect high
+    pattern: 2
+    control_type: "or"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+  - teensy_id: 1
+    bauble_id: 1 # nothing
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+      - teensy_id: 1
+        touchpad: 1
+  - teensy_id: 1
+    bauble_id: 2 # star high
+    pattern: 2
+    control_type: "or"
+    controllers:
+      - teensy_id: 1
+        touchpad: 1
+      - teensy_id: 1
+        touchpad: 0
+  - teensy_id: 1
+    bauble_id: 3 # nothing
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+  - teensy_id: 1
+    bauble_id: 4 # bow low sayers
+    pattern: 2
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+  - teensy_id: 1
+    bauble_id: 5 # bow low bakchich
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 1
+        touchpad: 1
+  - teensy_id: 1
+    bauble_id: 6 # nothing
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+  - teensy_id: 1
+    bauble_id: 7 # triangle low playhouse
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+      - teensy_id: 1
+        touchpad: 1

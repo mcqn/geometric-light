@@ -1,0 +1,25 @@
+# systemd service file to start the gift-generator script
+
+[Unit]
+Description=Script to run the Play the Square controller
+Wants=local-fs.target
+
+[Service]
+Type=simple
+# Run as normal pi user - feel free to change...
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/Controller
+Nice=5
+# Give the network time to come up properly before we try to connect to Twitter
+ExecStart=/usr/bin/ruby /home/pi/Controller/controller.rb
+# Use SIGINT to stop
+KillSignal=SIGINT
+# Auto restart on crash
+Restart=on-failure
+# Tag things in the log
+SyslogIdentifier=play-the-square
+#StandardOutput=syslog
+
+[Install]
+WantedBy=multi-user.target

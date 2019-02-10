@@ -1,0 +1,2 @@
+# Ignore the activity log, as it's too big for github
+stats/activity.log

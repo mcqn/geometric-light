@@ -1,0 +1,312 @@
+logfile: "activity.log"
+# Times (hours of 24hr clock) between which the display should be off
+off_period:
+  start: 1
+  end: 6
+teensy_count: 4
+teensies:
+  - teensy_id: 1
+    touchpads: # Sayers
+      - id: 0 # pink, left
+        touch_threshold: 80
+      - id: 1 # yellow, right
+        touch_threshold: 80
+  - teensy_id: 2
+    touchpads: # Bakchich
+      - id: 0 # pink, left
+        touch_threshold: 80
+      - id: 1 # yellow, right
+        touch_threshold: 80
+  - teensy_id: 3
+    touchpads: # Sweeneys
+      - id: 0 # pink, left
+        touch_threshold: 80
+      - id: 1 # yellow, right
+        touch_threshold: 80
+  - teensy_id: 4
+    touchpads: # Doesn't actually have any touchpads connected
+      - id: 0
+        touch_threshold: 20000
+      - id: 1
+        touch_threshold: 20000
+baubles:
+  - teensy_id: 1
+    bauble_id: 0 # reflect high
+    pattern: 2
+    control_type: "or"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+      - teensy_id: 2
+        touchpad: 0
+      - teensy_id: 3
+        touchpad: 0
+  - teensy_id: 1
+    bauble_id: 1 # nothing
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+      - teensy_id: 1
+        touchpad: 1
+  - teensy_id: 1
+    bauble_id: 2 # star high
+    pattern: 2
+    control_type: "or"
+    controllers:
+      - teensy_id: 1
+        touchpad: 1
+      - teensy_id: 3
+        touchpad: 1
+  - teensy_id: 1
+    bauble_id: 3 # nothing
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+  - teensy_id: 1
+    bauble_id: 4 # bow low sayers
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+  - teensy_id: 1
+    bauble_id: 5 # bow low bakchich
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 2
+        touchpad: 0
+  - teensy_id: 1
+    bauble_id: 6 # nothing
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+  - teensy_id: 1
+    bauble_id: 7 # triangle low playhouse
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+      - teensy_id: 3
+        touchpad: 1
+  - teensy_id: 2
+    bauble_id: 0 # tricorn mid playhouse
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 2
+        touchpad: 0
+      - teensy_id: 2
+        touchpad: 1
+  - teensy_id: 2
+    bauble_id: 1 # chevron lowish lfc
+    pattern: 2
+    control_type: "or"
+    controllers:
+      - teensy_id: 1
+        touchpad: 1
+      - teensy_id: 2
+        touchpad: 1
+  - teensy_id: 2
+    bauble_id: 2 # slant lowish sayers
+    pattern: 2
+    control_type: "or"
+    controllers:
+      - teensy_id: 2
+        touchpad: 0
+      - teensy_id: 3
+        touchpad: 1
+  - teensy_id: 2
+    bauble_id: 3 # bow high sayers
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+      - teensy_id: 2
+        touchpad: 0
+  - teensy_id: 2
+    bauble_id: 4 # slant mid playhouse
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 1
+        touchpad: 1
+      - teensy_id: 2
+        touchpad: 0
+  - teensy_id: 2
+    bauble_id: 5 # reflect mid sayers
+    pattern: 2
+    control_type: "or"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+      - teensy_id: 2
+        touchpad: 0
+      - teensy_id: 3
+        touchpad: 0
+  - teensy_id: 2
+    bauble_id: 6 # reflect mid sweeneys
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 3
+        touchpad: 1
+      - teensy_id: 3
+        touchpad: 0
+  - teensy_id: 2
+    bauble_id: 7 # chevron mid playhouse
+    pattern: 2
+    control_type: "or"
+    controllers:
+      - teensy_id: 1
+        touchpad: 1
+      - teensy_id: 1
+        touchpad: 0
+      - teensy_id: 2
+        touchpad: 0
+      - teensy_id: 2
+        touchpad: 1
+  - teensy_id: 3
+    bauble_id: 0 # nothing
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+  - teensy_id: 3
+    bauble_id: 1 # upside down triangle lowish paolo e donatos
+    pattern: 2
+    control_type: "or"
+    controllers:
+      - teensy_id: 3
+        touchpad: 0
+      - teensy_id: 3
+        touchpad: 1
+  - teensy_id: 3
+    bauble_id: 2 # chevron low sweeneys
+    pattern: 2
+    control_type: "or"
+    controllers:
+      - teensy_id: 3
+        touchpad: 1
+  - teensy_id: 3
+    bauble_id: 3 # triangle low paolo e donatos
+    pattern: 2
+    control_type: "or"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+      - teensy_id: 2
+        touchpad: 1
+  - teensy_id: 3
+    bauble_id: 4 # geostar low lfc
+    pattern: 2
+    control_type: "or"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+      - teensy_id: 2
+        touchpad: 0
+  - teensy_id: 3
+    bauble_id: 5 # geostar lowish playhouse
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 2
+        touchpad: 1
+  - teensy_id: 3
+    bauble_id: 6 # tricorn lowish sayers
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+      - teensy_id: 1
+        touchpad: 1
+  - teensy_id: 3
+    bauble_id: 7 # star low sayers
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 1
+        touchpad: 1
+  - teensy_id: 4
+    bauble_id: 0 # star high paolo e donatos
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 3
+        touchpad: 0
+      - teensy_id: 1
+        touchpad: 0
+  - teensy_id: 4
+    bauble_id: 1 # icicle
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+      - teensy_id: 1
+        touchpad: 1
+      - teensy_id: 2
+        touchpad: 0
+      - teensy_id: 2
+        touchpad: 1
+  - teensy_id: 4
+    bauble_id: 2 # rotosym playhouse
+    pattern: 2
+    control_type: "or"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+      - teensy_id: 1
+        touchpad: 1
+  - teensy_id: 4
+    bauble_id: 3 # rotosym sweeneys
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+  - teensy_id: 4
+    bauble_id: 4 # tricorn lowish paolo e donatos
+    pattern: 2
+    control_type: "or"
+    controllers:
+      - teensy_id: 3
+        touchpad: 0
+      - teensy_id: 2
+        touchpad: 0
+      - teensy_id: 1
+        touchpad: 1
+  - teensy_id: 4
+    bauble_id: 5 # geostar low sweeneys
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 3
+        touchpad: 0
+  - teensy_id: 4
+    bauble_id: 6 # slant low sweeneys
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0
+      - teensy_id: 2
+        touchpad: 0
+  - teensy_id: 4
+    bauble_id: 7 # nothing
+    pattern: 2
+    control_type: "and"
+    controllers:
+      - teensy_id: 1
+        touchpad: 0

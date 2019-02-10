@@ -1,0 +1,40 @@
+---
+- name: Ansible template for a Raspberry Pi
+  hosts: controller-pi
+  vars:
+    pi_name: controller
+  remote_user: pi
+  become: yes
+  become_method: sudo
+  # Include whichever roles make sense here
+  roles:
+    - { role: renamed-pi, pi_name="playthesquare" }
+  #  - ssh-tunnel
+
+  pre_tasks:
+    - name: Update apt
+      apt: upgrade=dist update_cache=yes
+      become: true
+
+  tasks:
+  - name: Install Ruby
+    apt: name=ruby state=present
+  - name: Install screen
+    apt: name=screen state=present
+  - name: Install network manager
+    apt: name=network-manager state=present
+  - name: Copy wifi settings across (because nmcli is not working right now)
+    copy: src=wpa_supplicant.conf dest=/etc/wpa_supplicant/wpa_supplicant.conf
+  - name: Install build essentials so the serialport gem can be built
+    apt: name=build-essential state=present
+  - name: Install ruby-dev
+    apt: name=ruby-dev state=present
+  - name: Install serialport gem
+    gem: name=serialport state=present user_install=no
+  - name: Copy controller app across
+    synchronize: src=../Controller dest=/home/pi
+    become: false
+  - name: Copy the script to autostart the controller
+    copy: src=controller.service dest=/lib/systemd/system/controller.service
+  - name: Set the controller service to autostart
+    service: name=controller.service enabled=yes
